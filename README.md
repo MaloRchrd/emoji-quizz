@@ -25,3 +25,7 @@ cd /pathToFolder/emoji-quizz
 npm install
 node index.js
 ```
+
+## Responses Cheat sheet 
+
+  [Cheat sheet](https://github.com/MaloRchrd/emoji-quizz/blob/master/question.js)
