@@ -1,0 +1,22 @@
+{
+  "name": "emoji-quiz",
+  "version": "1.0.0",
+  "description": "multiplayer emoji quizz",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [
+    "socket.io",
+    "quizz"
+  ],
+  "author": "Malo Richard",
+  "license": "ISC",
+  "dependencies": {
+    "express": "^4.15.2",
+    "moment": "^2.18.1",
+    "mongodb": "^2.2.25",
+    "pug": "^2.0.0-beta11",
+    "socket.io": "^1.7.3"
+  }
+}

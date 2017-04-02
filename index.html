@@ -1,0 +1,152 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <title>chat room - Bootdey.com</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
+    <link href="http://netdna.bootstrapcdn.com/bootstrap/3.3.4/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="css/chat.css" media="screen">
+    <link rel="stylesheet" href="css/animate.css" media="screen">
+    <script src="js/moment.js"></script>
+</head>
+<body>
+<link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css" rel="stylesheet">
+<div class="container bootstrap snippet">
+
+    <a id="bestScore" href="/score" alt="bestScore">
+     🏆️
+    </a>
+    <!-- <a id="SubmitQuiz" href="/submitQuiz" alt="bestScore">
+       🖊️
+    </a> -->
+    <h1 align="center">Emoji Quiz 🤗 ⌨️ ❓</h1>
+    <div class="row" id="loginArea">
+      <div class="col-md-12 bg-white" align="center">
+        <br>
+        <h5>Connecter vous avec votre email et username </h5>
+        <p>
+          ⚠️chaque username est unique, pour réutiliser votre username nous l'associon à votre email ⚠️
+        </p>
+        <br>
+        <form id="login">
+          <label>Email <br>
+            <input id="email" type="text" name="name" value="">
+            <br>
+            <!-- $('#existingAccount').show() -->
+            <div class="alert alert-danger animated fadeInRight" id="existingAccount"role="alert">Account already exist with this email.</div>
+
+
+          </label><br>
+          <label>Username <br>
+            <input id="username" type="text" name="name" value="">
+            <br>
+            <!-- $('#takenUsername').show() -->
+            <div class="alert alert-danger animated fadeInRight" id="takenUsername"role="alert"> <h3>⚠️ 😩</h3>Sorry, username already taken.</div>
+            <!-- $('#blankUsername').show() -->
+            <div class="alert alert-danger animated fadeInRight" id="blankUsername" role="alert"> <h3>⚠️ ⚠️</h3>You can't have a blank username or email.</div>
+          </label> <br>
+          <label>Choisissez votre Avatar :</label>
+          <br>
+          <label>
+            <input type="radio" name="avatarOptions" id="inlineRadio1" value="avatar1"> <br><img class="img-circle" src="http://bootdey.com/img/Content/user_1.jpg" alt="" />
+          </label>
+          <label>
+            <input type="radio" name="avatarOptions" id="inlineRadio2" value="avatar2"> <br><img class="img-circle" src="http://bootdey.com/img/Content/user_2.jpg" alt="" />
+          </label>
+          <label>
+            <input type="radio" name="avatarOptions" id="inlineRadio3" value="avatar3"><br> <img class="img-circle" src="http://bootdey.com/img/Content/user_3.jpg" alt="" />
+          </label> <br><br>
+          <input class="btn btn-info" type="submit" name="submit" value="Rejoindre la partie">
+        </form>
+      </div>
+    </div>
+    <div class="row" id="quiz">
+        <!--=========================================================-->
+        <!-- selected chat -->
+    	<div class="col-md-8" >
+        <div class="chat-box bg-white" align="center">
+          <h3 data-toggle="tooltip" title="Pour des questions de rapidité les accents ont été supprimés !" >Réponse</h3>
+          <div class="input-group">
+            <form class="form-inline" action="#" id="messageForm">
+              <label for=""></label>
+              <input type="text" name="message" value="" class=" border no-shadow no-rounded" id="message" >
+              <input type="submit" id="messageSubmit" class="btn btn-success no-rounded" value="Send" >
+            </form>
+            <!-- <input class="form-control border no-shadow no-rounded" id="message" placeholder="Type your message here">
+            <span class="input-group-btn">
+              <input  id="messageSubmit" class="btn btn-success no-rounded" value="Send" type="button"/>
+            </span> -->
+          </div><!-- /input-group -->
+        </div>
+            <div class="chat-message bg-white">
+                <ul id='chat' class="chat">
+                </ul>
+            </div>
+
+		</div>
+    <div class="col-md-4 bg-white" align="center">
+      <h3>Question</h3>
+      <div class="question" >
+        <h6>Film</h6>
+        <h3 id='emoji'>Début du jeu</h3>
+      </div>
+
+    </div>
+    <br><br>
+    <div class="col-md-4 bg-white ">
+            <div class="row padding-sm" align="center" style="height: 40px; line-height : 40px ">
+            	<h3>Players</h3>
+            </div>
+
+            <!-- =============================================================== -->
+            <!-- member list -->
+            <ul id='userlist' class="friend-list">
+                <li class="active bounceInDown">
+                	<a href="#" class="clearfix">
+                		<img src="http://bootdey.com/img/Content/user_1.jpg" alt="" class="img-circle">
+                		<div class="friend-name">
+                			<strong>John Doe</strong>
+                		</div>
+                		<div class="last-message text-muted">hello</div>
+                		<small class="time text-muted">Score</small>
+                		<small class="chat-alert label label-danger">1</small>
+                	</a>
+                </li>
+            </ul>
+		</div>
+	</div>
+  <!-- modal results  -->
+  <div class="modal fade" id="ResultModal" tabindex="-1" role="dialog">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+        <h4 class="modal-title">Fin du jeu</h4>
+      </div>
+      <div class="modal-body">
+        <ul id="results">
+
+        </ul>
+
+      </div>
+      <!-- <div class="modal-footer">
+        <a href='/score' type="button" class="btn btn-default" data-dismiss="modal">Best Scores</a>
+        <button type="button" class="btn btn-default" data-dismiss="modal">Quitter</button>
+        <button id="replay" type="button" class="btn btn-default">Rejouer</button>
+      </div> -->
+    </div><!-- /.modal-content -->
+  </div><!-- /.modal-dialog -->
+</div><!-- /.modal -->
+</div>
+
+<script src="http://netdna.bootstrapcdn.com/bootstrap/3.3.4/js/bootstrap.min.js"></script>
+<script src="socket.io/socket.io.js"></script>
+<script src="../js/app.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/mustache.js/2.3.0/mustache.js"></script>
+<script type="text/javascript">
+
+
+</script>
+</body>
+</html>
