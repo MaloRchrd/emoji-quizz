@@ -9,6 +9,7 @@
   - MongoDB
 
 ## front-end
+  - jQuery
   - Bootstrap
   - List.js
   - pug.js
