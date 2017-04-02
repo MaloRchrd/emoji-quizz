@@ -1,6 +1,6 @@
 # emoji-quizz
 
-![emoji-quizz](/public/img/emojiquizz.png)
+![emoji-quizz](/public/img/emoji-quizz.png)
 
 ## stack technic
   - Node
